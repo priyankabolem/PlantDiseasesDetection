@@ -1,8 +1,17 @@
 import tensorflow as tf
-from tensorflow.keras import layers, models
-from tensorflow.keras.applications import ResNet50, EfficientNetB0, MobileNetV2
 from typing import Tuple
 import logging
+
+try:
+    from tensorflow.keras import layers, models
+    from tensorflow.keras.applications import ResNet50, EfficientNetB0, MobileNetV2
+except ImportError:
+    # Fallback for import issues
+    layers = tf.keras.layers
+    models = tf.keras.models
+    ResNet50 = tf.keras.applications.ResNet50
+    EfficientNetB0 = tf.keras.applications.EfficientNetB0
+    MobileNetV2 = tf.keras.applications.MobileNetV2
 
 logger = logging.getLogger(__name__)
 

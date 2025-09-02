@@ -1,5 +1,8 @@
 """Test model loading and predictions."""
 
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Suppress TF warnings
+
 import numpy as np
 from pathlib import Path
 import sys
@@ -7,11 +10,14 @@ import sys
 # Add parent directory to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-import tensorflow as tf  # noqa: E402
-from src.models.architectures import ModelBuilder  # noqa: E402
+try:
+    import tensorflow as tf  # noqa: E402
+    tf.config.set_visible_devices([], 'GPU')  # Force CPU for tests
+except Exception:
+    # If GPU config fails, continue anyway
+    pass
 
-# Ensure TensorFlow is working
-tf.config.set_visible_devices([], 'GPU')  # Force CPU for tests
+from src.models.architectures import ModelBuilder  # noqa: E402
 
 
 class TestModel:
