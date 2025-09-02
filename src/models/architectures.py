@@ -125,15 +125,25 @@ class ModelBuilder:
         return model
     
     def _build_custom_cnn(self, dropout_rate: float) -> tf.keras.Model:
-        """Build custom CNN model matching the saved weights structure."""
-        model = models.Sequential([
-            layers.Conv2D(32, (3, 3), activation='relu', input_shape=self.input_shape, name='conv2d_1'),
-            layers.MaxPooling2D(2, 2, name='max_pooling2d'),
-            layers.Conv2D(64, (3, 3), activation='relu', name='conv2d_2'),
-            layers.GlobalAveragePooling2D(name='global_average_pooling2d'),
-            layers.Dense(self.num_classes, activation='softmax', name='predictions')
-        ])
+        """Build custom CNN model matching the saved weights structure exactly."""
+        # Match the exact architecture: conv2d_1 -> max_pooling2d -> conv2d_2 -> global_avg_pool -> predictions
+        inputs = tf.keras.Input(shape=self.input_shape)
+        x = layers.Conv2D(32, (3, 3), activation='relu', name='conv2d_1')(inputs)
+        x = layers.MaxPooling2D(2, 2, name='max_pooling2d')(x)  
+        x = layers.Conv2D(64, (3, 3), activation='relu', name='conv2d_2')(x)
+        x = layers.GlobalAveragePooling2D(name='global_average_pooling2d')(x)
+        outputs = layers.Dense(self.num_classes, activation='softmax', name='predictions')(x)
         
+        model = tf.keras.Model(inputs, outputs)
+        return model
+    
+    def _build_simple_cnn(self, dropout_rate: float) -> tf.keras.Model:
+        """Build very simple CNN that might match saved weights."""
+        model = models.Sequential([
+            layers.Conv2D(32, (3, 3), activation='relu', input_shape=self.input_shape),
+            layers.Conv2D(64, (3, 3), activation='relu'),
+            layers.Dense(self.num_classes, activation='softmax')
+        ])
         return model
     
     def unfreeze_layers(self, model: tf.keras.Model, num_layers: int = 20) -> tf.keras.Model:

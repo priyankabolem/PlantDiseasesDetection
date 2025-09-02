@@ -80,22 +80,26 @@ def load_model(model_type: str = "efficientnet-b0"):
             with h5py.File(str(model_path), 'r') as f:
                 keys = list(f['model_weights'].keys())
                 
-            # Determine architecture based on layer names
-            if 'conv2d_1' in keys and 'conv2d_2' in keys:
-                # This was trained with custom CNN architecture
-                architecture = "custom-cnn"
-            else:
-                architecture = model_type
-                
-            logger.info(f"Detected architecture: {architecture}")
-            
-            # Build matching architecture
+            # Try different architectures to match the saved weights
             builder = ModelBuilder(num_classes=38, input_shape=(224, 224, 3))
-            model = builder.build_model(architecture=architecture, pretrained=False)
             
-            # Load weights
-            model.load_weights(str(model_path))
-            logger.info(f"Model weights loaded successfully from {model_path}")
+            architectures_to_try = ["custom-cnn"]
+            model_loaded = False
+            
+            for arch in architectures_to_try:
+                try:
+                    logger.info(f"Trying architecture: {arch}")
+                    model = builder.build_model(architecture=arch, pretrained=False)
+                    model.load_weights(str(model_path))
+                    logger.info(f"Successfully loaded weights with {arch} architecture")
+                    model_loaded = True
+                    break
+                except Exception as arch_error:
+                    logger.warning(f"Failed to load weights with {arch}: {arch_error}")
+                    continue
+            
+            if not model_loaded:
+                raise Exception("No architecture matched the saved weights")
                 
         except Exception as e:
             logger.error(f"Failed to load model: {e}")
