@@ -189,14 +189,35 @@ def main():
     st.subheader("Quick Demo - Try Sample Images")
     st.markdown("Click any button below to instantly see the system in action:")
 
-    c1, c2, c3, c4 = st.columns(4)
     sample_images = {
-        "Tomato Blight": "sample_images/diseased/tomato_late_blight.jpg",
         "Apple Scab": "sample_images/diseased/apple_scab.jpg",
-        "Grape Rot": "sample_images/diseased/grape_black_rot.jpg",
-        "Healthy Leaf": "sample_images/healthy/tomato_healthy.jpg",
+        "Tomato Blight": "sample_images/diseased/tomato_late_blight.jpg",
+        "Grape Black Rot": "sample_images/diseased/grape_black_rot.jpg",
+        "Healthy Apple": "sample_images/healthy/apple_healthy.jpg",
+        "Healthy Tomato": "sample_images/healthy/tomato_healthy.jpg",
+        "Healthy Grape": "sample_images/healthy/grape_healthy.jpg",
     }
-    for col, (name, path) in zip([c1, c2, c3, c4], sample_images.items()):
+    
+    # Create two rows of sample buttons
+    st.write("**Diseased Samples:**")
+    c1, c2, c3 = st.columns(3)
+    diseased_cols = [c1, c2, c3]
+    
+    for col, (name, path) in zip(diseased_cols, list(sample_images.items())[:3]):
+        with col:
+            if st.button(name, use_container_width=True):
+                p = BASE_DIR / path
+                if p.exists():
+                    st.session_state.sample_image = str(p)
+                    st.session_state.use_sample = True
+                else:
+                    st.warning(f"Sample not found: {path}")
+    
+    st.write("**Healthy Samples:**")
+    c4, c5, c6 = st.columns(3)
+    healthy_cols = [c4, c5, c6]
+    
+    for col, (name, path) in zip(healthy_cols, list(sample_images.items())[3:]):
         with col:
             if st.button(name, use_container_width=True):
                 p = BASE_DIR / path
