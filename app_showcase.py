@@ -74,12 +74,13 @@ def load_model(model_type: str = "efficientnet-b0"):
     model_path = BASE_DIR / "weights" / "pretrained" / "best_model.h5"
     if model_path.exists():
         try:
-            # Try loading with custom_objects to handle version compatibility
-            custom_objects = {'batch_shape': None}
-            model = tf.keras.models.load_model(str(model_path), compile=False, custom_objects=custom_objects)
-            logger.info(f"Model loaded from {model_path}")
+            # First try loading weights into a new model architecture
+            builder = ModelBuilder(num_classes=38, input_shape=(224, 224, 3))
+            model = builder.build_model(architecture=model_type, pretrained=False)
+            model.load_weights(str(model_path))
+            logger.info(f"Model weights loaded from {model_path}")
         except Exception as e:
-            logger.warning(f"Failed to load saved model: {e}")
+            logger.warning(f"Failed to load model weights: {e}")
             st.warning("Model loading failed. Using demo model instead.")
             builder = ModelBuilder(num_classes=38, input_shape=(224, 224, 3))
             model = builder.build_model(architecture=model_type, pretrained=False)
