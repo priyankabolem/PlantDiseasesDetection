@@ -1,18 +1,20 @@
 """Test model loading and predictions."""
 
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Suppress TF warnings
-os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # Force CPU
 
-import numpy as np
-from pathlib import Path
-import sys
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # Suppress TF warnings
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # Force CPU
+
+import numpy as np  # noqa: E402
+from pathlib import Path  # noqa: E402
+import sys  # noqa: E402
 
 # Add parent directory to path
 sys.path.append(str(Path(__file__).parent.parent))
 
+# Import TensorFlow to ensure it's available but we don't use it directly
 try:
-    import tensorflow as tf  # noqa: E402
+    import tensorflow  # noqa: E402, F401
 except ImportError as e:
     print(f"TensorFlow import failed: {e}")
     raise
