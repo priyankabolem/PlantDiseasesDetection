@@ -80,4 +80,4 @@ Thumbs.db
 .streamlit/secrets.toml
 
 # Git LFS pointer files (already tracked)
-# *.h5 files are tracked by Git LFS
+# *.h5 files are tracked by Git LFS*.backup
