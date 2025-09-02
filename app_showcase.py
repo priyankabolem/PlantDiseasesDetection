@@ -192,9 +192,9 @@ def main():
 
     sample_images = {
         "Apple Scab": "sample_images/diseased/apple_scab.jpg",
-        "Tomato Early Blight": "sample_images/diseased/tomato_late_blight.jpg",
+        "Tomato Early Blight": "sample_images/diseased/tomato_early_blight_v2.jpg",
         "Grape Black Rot": "sample_images/diseased/grape_black_rot.jpg",
-        "Tomato Late Blight": "sample_images/diseased/tomato other.jpg",
+        "Tomato Late Blight": "sample_images/diseased/tomato_late_blight_v2.jpg",
         "Healthy Apple": "sample_images/healthy/apple_healthy.jpg",
         "Healthy Tomato": "sample_images/healthy/tomato_healthy.jpg",
         "Healthy Grape": "sample_images/healthy/grape_healthy.jpg",
