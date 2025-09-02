@@ -337,7 +337,7 @@ def main():
     st.markdown("""
     <div style='text-align: center; color: #666;'>
       <p>Built by <b>Priyanka Bolem</b> • ML Engineer • <a href='mailto:priyankabolem@gmail.com'>priyankabolem@gmail.com</a> • <a href='https://www.linkedin.com/in/priyanka-bolem/'>LinkedIn</a></p>
-      <p>Showcasing: Computer Vision • Deep Learning • Production Deployment • Full-Stack ML Development</p>
+      <p>Technologies: Computer Vision • Deep Learning • Production Deployment • Full-Stack ML Development</p>
     </div>
     """, unsafe_allow_html=True)
 

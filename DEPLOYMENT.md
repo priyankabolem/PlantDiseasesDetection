@@ -117,7 +117,7 @@ Configure these in deployment platform:
 
 ```bash
 # Hugging Face Spaces
-HF_TOKEN=your_hugging_face_token  # For private models
+HF_TOKEN=<hugging_face_token>  # For private models
 
 # Render/Heroku
 PORT=8501  # Usually set automatically
@@ -201,7 +201,7 @@ git commit -m "Track model files with LFS"
 
 ## Useful Links
 
-- [Streamlit Deployment Docs](https://docs.streamlit.io/streamlit-community-cloud/deploy-your-app)
+- [Streamlit Deployment Docs](https://docs.streamlit.io/streamlit-community-cloud/)
 - [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces)
 - [Render Docs](https://render.com/docs)
 - [Git LFS Documentation](https://git-lfs.github.com/)

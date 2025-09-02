@@ -254,7 +254,7 @@ def main():
     # Create synthetic dataset
     dataset_path = create_synthetic_dataset(output_dir, num_samples_per_class=30)
     
-    print("\n📌 To train the model with this dataset, run:")
+    print("\nTo train the model with this dataset, run:")
     print(f"   python train_model.py --data-dir {dataset_path}")
 
 
