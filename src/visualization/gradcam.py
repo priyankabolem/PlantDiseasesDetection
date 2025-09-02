@@ -6,7 +6,6 @@ from tensorflow.keras.models import Model
 import cv2
 from pathlib import Path
 import matplotlib.pyplot as plt
-import matplotlib.cm as cm
 import logging
 
 logger = logging.getLogger(__name__)

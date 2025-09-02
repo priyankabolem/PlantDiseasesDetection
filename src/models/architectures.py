@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import layers, models
 from tensorflow.keras.applications import ResNet50, EfficientNetB0, MobileNetV2
-from typing import Tuple, Optional
+from typing import Tuple
 import logging
 
 logger = logging.getLogger(__name__)

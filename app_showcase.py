@@ -17,18 +17,17 @@ for p in (BASE_DIR, SRC_DIR):
         sys.path.insert(0, p_str)
 # ---------------------------------------------------------------------------
 
-import streamlit as st
-import tensorflow as tf
-import numpy as np
-from PIL import Image
-import json
-import time
-import logging
+import streamlit as st  # noqa: E402
+import tensorflow as tf  # noqa: E402
+import numpy as np  # noqa: E402
+from PIL import Image  # noqa: E402
+import json  # noqa: E402
+import time  # noqa: E402
+import logging  # noqa: E402
 
 # Local imports
-from src.visualization.gradcam import GradCAM
-from src.data.treatments import get_treatment_recommendation
-from src.models.architectures import ModelBuilder
+from src.data.treatments import get_treatment_recommendation  # noqa: E402
+from src.models.architectures import ModelBuilder  # noqa: E402
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -99,9 +98,9 @@ def load_model(model_type: str = "efficientnet-b0"):
                 # Check H5 file structure to determine architecture
                 with h5py.File(str(model_path), "r") as f:
                     if "model_weights" in f:
-                        keys = list(f["model_weights"].keys())
+                        _ = list(f["model_weights"].keys())  # Used for debugging structure
                     else:
-                        keys = list(f.keys())
+                        _ = list(f.keys())  # Used for debugging structure
 
                 # Try different architectures to match the saved weights
                 builder = ModelBuilder(num_classes=38, input_shape=(224, 224, 3))
@@ -187,7 +186,8 @@ def main():
         unsafe_allow_html=True,
     )
     st.markdown(
-        "<p style='text-align: center; font-size: 18px;'><b>Production-Ready ML System</b> • End-to-End Deep Learning Solution • Real-Time Inference</p>",
+        "<p style='text-align: center; font-size: 18px;'><b>Production-Ready ML System</b> • "
+        "End-to-End Deep Learning Solution • Real-Time Inference</p>",
         unsafe_allow_html=True,
     )
 
@@ -211,8 +211,8 @@ def main():
     # Demo disclaimer
     st.info(
         """
-    **Demo Notice**: This system demonstrates the complete ML pipeline and architecture for plant disease detection. 
-    For production-ready predictions, the model requires training on a comprehensive plant disease dataset. 
+    **Demo Notice**: This system demonstrates the complete ML pipeline and architecture for plant disease detection.
+    For production-ready predictions, the model requires training on a comprehensive plant disease dataset.
     Current predictions showcase system functionality.
     """
     )
@@ -329,7 +329,8 @@ def main():
                     f"<div class='warning-box'><h3>Possible Disease: {primary['class']}</h3>"
                     f"<p><b>Confidence:</b> {primary['confidence']:.1%} (Low - model needs more training)</p>"
                     f"<p><b>Inference Time:</b> {results['inference_time_ms']:.1f}ms</p>"
-                    f"<p><i>Note: This model appears to be undertrained. Results should be verified by an expert.</i></p></div>",
+                    f"<p><i>Note: This model appears to be undertrained. "
+                    f"Results should be verified by an expert.</i></p></div>",
                     unsafe_allow_html=True,
                 )
 
@@ -339,14 +340,15 @@ def main():
                 st.write(treatment)
                 if primary["confidence"] < 0.10:
                     st.warning(
-                        "Treatment recommendation based on low-confidence prediction. Please verify diagnosis with an expert."
+                        "Treatment recommendation based on low-confidence prediction. "
+                        "Please verify diagnosis with an expert."
                     )
 
             # All predictions
             with st.expander("All Predictions"):
                 for i, pred in enumerate(results["predictions"]):
                     st.progress(pred["confidence"])
-                    st.write(f"{i+1}. {pred['class']}: {pred['confidence']:.1%}")
+                    st.write(f"{i + 1}. {pred['class']}: {pred['confidence']:.1%}")
         else:
             st.info("Upload an image or try a sample to begin analysis")
 
@@ -367,7 +369,9 @@ def main():
     st.markdown(
         """
     <div style='text-align: center; color: #666;'>
-      <p>Built by <b>Priyanka Bolem</b> • ML Engineer • <a href='mailto:priyankabolem@gmail.com'>priyankabolem@gmail.com</a> • <a href='https://www.linkedin.com/in/priyanka-bolem/'>LinkedIn</a></p>
+      <p>Built by <b>Priyanka Bolem</b> • ML Engineer • "
+        "<a href='mailto:priyankabolem@gmail.com'>priyankabolem@gmail.com</a> • "
+        "<a href='https://www.linkedin.com/in/priyanka-bolem/'>LinkedIn</a></p>
       <p>Technologies: Computer Vision • Deep Learning • Production Deployment • Full-Stack ML Development</p>
     </div>
     """,

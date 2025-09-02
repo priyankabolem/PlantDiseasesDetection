@@ -1,15 +1,13 @@
 """Test model loading and predictions."""
 
-import pytest
 import numpy as np
-import tensorflow as tf
 from pathlib import Path
 import sys
 
 # Add parent directory to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.models.architectures import ModelBuilder
+from src.models.architectures import ModelBuilder  # noqa: E402
 
 
 class TestModel:

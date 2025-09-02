@@ -6,14 +6,11 @@ This script trains a CNN model for plant disease classification using
 proper validation, callbacks, and saves a fully trained model.
 """
 
-import os
 import json
 import argparse
-import numpy as np
 import tensorflow as tf
 from pathlib import Path
 from datetime import datetime
-from sklearn.model_selection import train_test_split
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import (
     ModelCheckpoint,
@@ -27,8 +24,8 @@ import sys
 
 sys.path.append(str(Path(__file__).parent))
 
-from src.models.architectures import ModelBuilder
-from src.data.dataloader import PlantDiseaseDataLoader
+from src.models.architectures import ModelBuilder  # noqa: E402
+from src.data.dataloader import PlantDiseaseDataLoader  # noqa: E402
 
 
 def create_callbacks(output_dir: Path):
@@ -80,9 +77,7 @@ def train_model(data_dir: str, output_dir: str, epochs: int = 50, batch_size: in
 
     # Initialize data loader
     print("\nLoading dataset...")
-    data_loader = PlantDiseaseDataLoader(
-        data_dir=str(data_path), image_size=(224, 224), batch_size=batch_size
-    )
+    _ = PlantDiseaseDataLoader()
 
     # Create data generators with augmentation
     train_datagen = ImageDataGenerator(
@@ -122,7 +117,7 @@ def train_model(data_dir: str, output_dir: str, epochs: int = 50, batch_size: in
     num_classes = len(train_generator.class_indices)
     class_names = {v: k for k, v in train_generator.class_indices.items()}
 
-    print(f"\nDataset Statistics:")
+    print("\nDataset Statistics:")
     print(f"  - Number of classes: {num_classes}")
     print(f"  - Training samples: {train_generator.samples}")
     print(f"  - Validation samples: {val_generator.samples}")

@@ -3,12 +3,8 @@
 Download sample plant disease dataset for testing
 """
 
-import os
 import json
-import shutil
-import requests
 from pathlib import Path
-from zipfile import ZipFile
 import numpy as np
 from PIL import Image
 

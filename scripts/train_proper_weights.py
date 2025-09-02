@@ -5,16 +5,14 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent))
 
-import tensorflow as tf
-import numpy as np
-import json
+import numpy as np  # noqa: E402
 
 
 def create_properly_trained_model():
     """Create a model with weights that can distinguish different leaf patterns."""
 
     # Build the model architecture
-    from src.models.architectures import ModelBuilder
+    from src.models.architectures import ModelBuilder  # noqa: E402
 
     builder = ModelBuilder(num_classes=38, input_shape=(224, 224, 3))
     model = builder.build_model(architecture="custom-cnn", pretrained=False)
@@ -54,8 +52,7 @@ def create_properly_trained_model():
                         [[-1, -1, -1], [0, 0, 0], [1, 1, 1]],
                     ]
                 ).transpose(1, 2, 0)
-                * 0.2
-            )
+            ) * 0.2
         else:
             kernel1[:, :, :, i] = (
                 np.array(
@@ -65,8 +62,7 @@ def create_properly_trained_model():
                         [[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]],
                     ]
                 ).transpose(1, 2, 0)
-                * 0.2
-            )
+            ) * 0.2
 
     # Channels 24-31: Mixed feature detectors
     for i in range(24, 32):
@@ -150,7 +146,7 @@ def create_properly_trained_model():
         top_3 = np.argsort(pred)[-3:][::-1]
         print(f"\n{name}:")
         for i, idx in enumerate(top_3):
-            print(f"  {i+1}. Class {idx}: {pred[idx]:.4f}")
+            print(f"  {i + 1}. Class {idx}: {pred[idx]:.4f}")
 
     return model
 

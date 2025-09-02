@@ -125,7 +125,7 @@ def benchmark_tflite_model(tflite_path: Path, test_image_path: Path):
     for _ in range(num_runs):
         interpreter.set_tensor(input_details[0]["index"], image_array)
         interpreter.invoke()
-        output = interpreter.get_tensor(output_details[0]["index"])
+        _ = interpreter.get_tensor(output_details[0]["index"])
 
     avg_time = (time.time() - start_time) / num_runs * 1000
     logger.info(f"Average inference time: {avg_time:.2f} ms")
