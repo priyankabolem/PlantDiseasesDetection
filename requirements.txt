@@ -1,0 +1,10 @@
+# Core dependencies for Hugging Face Spaces
+streamlit>=1.28.0
+tensorflow>=2.13.0,<2.16.0
+numpy>=1.24.0,<2.0.0
+pillow>=10.0.0
+opencv-python-headless>=4.8.0
+matplotlib>=3.7.0
+pyyaml>=6.0
+
+# Note: Using opencv-python-headless instead of opencv-python for Hugging Face Spaces compatibility

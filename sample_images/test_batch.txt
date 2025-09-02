@@ -1,0 +1,6 @@
+samples/diseased/tomato_late_blight.jpg
+samples/diseased/apple_scab.jpg
+samples/diseased/grape_black_rot.jpg
+samples/healthy/tomato_healthy.jpg
+samples/healthy/apple_healthy.jpg
+samples/healthy/grape_healthy.jpg
