@@ -134,7 +134,7 @@ TREATMENTS = {
     "Strawberry___Leaf_scorch": {
         "symptoms": "Purple or brown spots on leaves with purple margins.",
         "treatment": "Remove infected leaves. Apply fungicides. "
-        "Ensure proper plant spacing and avoid overhead watering."
+        "Ensure proper plant spacing and avoid overhead watering.",
     },
     "Strawberry___healthy": {
         "symptoms": "No disease detected.",
@@ -197,8 +197,10 @@ def get_treatment_recommendation(disease_name: str) -> str:
         info = TREATMENTS[disease_name]
         return f"Symptoms: {info['symptoms']}\n\nTreatment: {info['treatment']}"
     else:
-        return ("Treatment information not available for this disease. "
-                "Please consult with a local agricultural expert.")
+        return (
+            "Treatment information not available for this disease. "
+            "Please consult with a local agricultural expert."
+        )
 
 
 def get_all_diseases() -> list:

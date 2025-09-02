@@ -98,7 +98,9 @@ def load_model(model_type: str = "efficientnet-b0"):
                 # Check H5 file structure to determine architecture
                 with h5py.File(str(model_path), "r") as f:
                     if "model_weights" in f:
-                        _ = list(f["model_weights"].keys())  # Used for debugging structure
+                        _ = list(
+                            f["model_weights"].keys()
+                        )  # Used for debugging structure
                     else:
                         _ = list(f.keys())  # Used for debugging structure
 
