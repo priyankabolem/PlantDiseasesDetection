@@ -35,7 +35,7 @@ A production-ready deep learning system for detecting plant diseases from leaf i
 
 ## Screenshots
 
-![Plant Disease Detection System - Live Demo](docs/Live%20demo%20image.png)
+[View Live Demo Screenshot on GitHub](https://github.com/priyankabolem/PlantDiseasesDetection/blob/main/docs/Live%20demo%20image.png)
 
 *Live demo showing the system analyzing plant leaf images with disease predictions and treatment recommendations*
 
