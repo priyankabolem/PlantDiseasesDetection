@@ -278,4 +278,3 @@ if __name__ == "__main__":
 
     print("\nModel weights created successfully!")
     print("The model should now give varied predictions based on image features.")
-

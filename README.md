@@ -21,8 +21,13 @@ A production-ready deep learning system for detecting plant diseases from leaf i
 
 ## Live Demo
 
-- **[Hugging Face Space](https://huggingface.co/spaces/Priyabolem/plant-disease-detection)** - Interactive Streamlit application
-- **[API Documentation](https://plant-disease-api.onrender.com/docs)** - FastAPI backend (Coming Soon)
+Experience the Plant Disease Detection System in action! The system analyzes plant leaf images and provides:
+- Real-time disease detection with confidence scores
+- Treatment recommendations for identified diseases  
+- Support for 38 disease categories across 14 plant species
+- Interactive interface with sample images for quick testing
+
+Visit the live demo: **[Hugging Face Space](https://huggingface.co/spaces/Priyabolem/plant-disease-detection)**
 
 ## Features
 
@@ -32,16 +37,6 @@ A production-ready deep learning system for detecting plant diseases from leaf i
 - **Confidence Scores**: See prediction confidence levels for informed decision-making
 - **Grad-CAM Visualizations**: Understand what the model is looking at (optional)
 - **Mobile Responsive**: Works on desktop and mobile devices
-
-## Live Demo
-
-Experience the Plant Disease Detection System in action! The system analyzes plant leaf images and provides:
-- Real-time disease detection with confidence scores
-- Treatment recommendations for identified diseases  
-- Support for 38 disease categories across 14 plant species
-- Interactive interface with sample images for quick testing
-
-Visit the live demo: **[Hugging Face Space](https://huggingface.co/spaces/Priyabolem/plant-disease-detection)**
 
 ## Technical Stack
 
