@@ -15,7 +15,7 @@ from PIL import Image
 
 def create_synthetic_dataset(output_dir: Path, num_samples_per_class: int = 50):
     """Create a synthetic dataset for testing model training."""
-    print("🌱 Creating synthetic plant disease dataset...")
+    print("Creating synthetic plant disease dataset...")
     
     # Define plant disease classes (38 classes as per the model)
     disease_classes = [
@@ -63,7 +63,7 @@ def create_synthetic_dataset(output_dir: Path, num_samples_per_class: int = 50):
     dataset_dir = output_dir / "plant_disease_dataset"
     dataset_dir.mkdir(parents=True, exist_ok=True)
     
-    print(f"📁 Creating {len(disease_classes)} class directories...")
+    print(f"Creating {len(disease_classes)} class directories...")
     
     # Generate synthetic images for each class
     for i, class_name in enumerate(disease_classes):
@@ -80,7 +80,7 @@ def create_synthetic_dataset(output_dir: Path, num_samples_per_class: int = 50):
             img_path = class_dir / f"{class_name}_{j:04d}.jpg"
             img.save(img_path, "JPEG", quality=85)
         
-        print(f"  ✓ Created {num_samples_per_class} images for {class_name}")
+        print(f"  - Created {num_samples_per_class} images for {class_name}")
     
     # Create metadata
     metadata = {
@@ -97,7 +97,7 @@ def create_synthetic_dataset(output_dir: Path, num_samples_per_class: int = 50):
     with open(metadata_path, 'w') as f:
         json.dump(metadata, f, indent=2)
     
-    print(f"\n✅ Dataset created successfully at: {dataset_dir}")
+    print(f"\nDataset created successfully at: {dataset_dir}")
     print(f"   - Total images: {metadata['total_samples']}")
     print(f"   - Classes: {metadata['num_classes']}")
     

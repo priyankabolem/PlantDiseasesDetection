@@ -18,7 +18,7 @@ from src.models.architectures import ModelBuilder
 
 def create_feature_based_model():
     """Create a model that responds to different image features."""
-    print("🌱 Creating feature-responsive model weights...")
+    print("Creating feature-responsive model weights...")
     
     # Disease classes
     disease_classes = [
@@ -42,7 +42,7 @@ def create_feature_based_model():
     model = builder.build_model(architecture="custom-cnn", pretrained=False)
     
     # Create custom initializer that responds to features
-    print("\n🔧 Creating feature-responsive weights...")
+    print("\nCreating feature-responsive weights...")
     
     # Get existing weights
     conv1_weights = model.get_layer('conv2d_1').get_weights()
@@ -206,7 +206,7 @@ def create_feature_based_model():
     for idx in top_idx:
         print(f"  - {disease_classes[idx]}: {pred3[idx]:.2%}")
     
-    print("\n✅ Feature-responsive model created successfully!")
+    print("\nFeature-responsive model created successfully!")
 
 
 if __name__ == "__main__":

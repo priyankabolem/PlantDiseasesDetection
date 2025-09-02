@@ -68,7 +68,7 @@ def create_callbacks(output_dir: Path):
 
 def train_model(data_dir: str, output_dir: str, epochs: int = 50, batch_size: int = 32):
     """Train the plant disease detection model."""
-    print("🌱 Starting Plant Disease Detection Model Training")
+    print("Starting Plant Disease Detection Model Training")
     
     # Set paths
     data_path = Path(data_dir)
@@ -76,7 +76,7 @@ def train_model(data_dir: str, output_dir: str, epochs: int = 50, batch_size: in
     output_path.mkdir(parents=True, exist_ok=True)
     
     # Initialize data loader
-    print("\n📊 Loading dataset...")
+    print("\nLoading dataset...")
     data_loader = PlantDiseaseDataLoader(
         data_dir=str(data_path),
         image_size=(224, 224),
@@ -124,7 +124,7 @@ def train_model(data_dir: str, output_dir: str, epochs: int = 50, batch_size: in
     num_classes = len(train_generator.class_indices)
     class_names = {v: k for k, v in train_generator.class_indices.items()}
     
-    print(f"\n📈 Dataset Statistics:")
+    print(f"\nDataset Statistics:")
     print(f"  - Number of classes: {num_classes}")
     print(f"  - Training samples: {train_generator.samples}")
     print(f"  - Validation samples: {val_generator.samples}")
@@ -133,10 +133,10 @@ def train_model(data_dir: str, output_dir: str, epochs: int = 50, batch_size: in
     class_names_path = output_path / "class_names.json"
     with open(class_names_path, 'w') as f:
         json.dump(class_names, f, indent=2)
-    print(f"\n💾 Saved class names to {class_names_path}")
+    print(f"\nSaved class names to {class_names_path}")
     
     # Build model
-    print("\n🏗️ Building model architecture...")
+    print("\nBuilding model architecture...")
     builder = ModelBuilder(num_classes=num_classes, input_shape=(224, 224, 3))
     model = builder.build_model(
         architecture="custom-cnn",
@@ -151,14 +151,14 @@ def train_model(data_dir: str, output_dir: str, epochs: int = 50, batch_size: in
         metrics=['accuracy', tf.keras.metrics.TopKCategoricalAccuracy(k=3, name='top3_acc')]
     )
     
-    print("\n📋 Model Summary:")
+    print("\nModel Summary:")
     model.summary()
     
     # Create callbacks
     callbacks = create_callbacks(output_path)
     
     # Train model
-    print("\n🚀 Starting training...")
+    print("\nStarting training...")
     history = model.fit(
         train_generator,
         epochs=epochs,
@@ -170,7 +170,7 @@ def train_model(data_dir: str, output_dir: str, epochs: int = 50, batch_size: in
     # Save final model
     final_model_path = output_path / "final_model.h5"
     model.save(final_model_path)
-    print(f"\n✅ Saved final model to {final_model_path}")
+    print(f"\nSaved final model to {final_model_path}")
     
     # Save training history
     history_path = output_path / "training_history.json"
@@ -180,10 +180,10 @@ def train_model(data_dir: str, output_dir: str, epochs: int = 50, batch_size: in
     }
     with open(history_path, 'w') as f:
         json.dump(history_dict, f, indent=2)
-    print(f"📊 Saved training history to {history_path}")
+    print(f"Saved training history to {history_path}")
     
     # Evaluate on validation set
-    print("\n🎯 Final Evaluation:")
+    print("\nFinal Evaluation:")
     val_loss, val_acc, val_top3_acc = model.evaluate(val_generator, verbose=0)
     print(f"  - Validation Loss: {val_loss:.4f}")
     print(f"  - Validation Accuracy: {val_acc:.4f}")
@@ -199,9 +199,9 @@ def train_model(data_dir: str, output_dir: str, epochs: int = 50, batch_size: in
         import shutil
         shutil.copy(best_checkpoint, deploy_dir / "best_model.h5")
         shutil.copy(class_names_path, deploy_dir / "class_names.json")
-        print(f"\n🚀 Deployed model to {deploy_dir}")
+        print(f"\nDeployed model to {deploy_dir}")
     
-    print("\n✨ Training completed successfully!")
+    print("\nTraining completed successfully!")
     return model, history
 
 

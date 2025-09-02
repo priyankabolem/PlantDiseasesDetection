@@ -1,6 +1,5 @@
 ---
 title: Plant Disease Detection
-emoji: 🌿
 colorFrom: green
 colorTo: yellow
 sdk: streamlit

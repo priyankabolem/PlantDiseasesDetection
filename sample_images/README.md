@@ -40,7 +40,7 @@ python infer.py --model weights/pretrained/best_model.h5 --batch samples/test_ba
 ### Streamlit Demo
 The sample images can be uploaded directly through the Streamlit interface.
 
-## Adding Your Own Samples
+## Adding Additional Samples
 
 1. Add images to appropriate subdirectories
 2. Ensure images are in JPG or PNG format

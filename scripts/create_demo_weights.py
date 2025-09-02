@@ -19,7 +19,7 @@ from src.models.architectures import ModelBuilder
 
 def create_trained_weights():
     """Create a model with properly initialized weights that simulate training."""
-    print("🌱 Creating properly trained demo weights...")
+    print("Creating properly trained demo weights...")
     
     # Define the 38 plant disease classes
     disease_classes = [
@@ -74,7 +74,7 @@ def create_trained_weights():
         metrics=['accuracy']
     )
     
-    print("\n🔧 Initializing model weights with proper values...")
+    print("\nInitializing model weights with proper values...")
     
     # Initialize weights with Xavier/Glorot initialization
     for layer in model.layers:
@@ -104,10 +104,10 @@ def create_trained_weights():
                     
                     # Set new weights
                     layer.set_weights([kernel, bias])
-                    print(f"  ✓ {layer.name}: initialized bias with shape {bias_shape}")
+                    print(f"  - {layer.name}: initialized bias with shape {bias_shape}")
     
     # Create synthetic training data to further tune the model
-    print("\n📊 Creating synthetic training samples...")
+    print("\nCreating synthetic training samples...")
     
     # Generate a small batch of synthetic data
     num_samples = 100
@@ -161,9 +161,9 @@ def create_trained_weights():
         model.fit(X_epoch, y_epoch, epochs=1, batch_size=32, verbose=0)
         
         if (epoch + 1) % 5 == 0:
-            print(f"  ✓ Completed epoch {epoch + 1}/20")
+            print(f"  - Completed epoch {epoch + 1}/20")
     
-    print("\n✅ Training completed!")
+    print("\nTraining completed!")
     
     # Save the model
     output_dir = Path("weights/pretrained")
@@ -194,11 +194,11 @@ def create_trained_weights():
     for idx in top_5_idx:
         print(f"  - {disease_classes[idx]}: {pred[idx]:.2%}")
     
-    print("\n✅ Model weights created successfully!")
+    print("\nModel weights created successfully!")
     print("   The model now has proper bias values and will give varied predictions.")
     
     # Verify biases are non-zero
-    print("\n🔍 Verifying bias values:")
+    print("\nVerifying bias values:")
     for layer in model.layers:
         if hasattr(layer, 'bias'):
             weights = layer.get_weights()
