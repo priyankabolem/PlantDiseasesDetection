@@ -125,22 +125,13 @@ class ModelBuilder:
         return model
     
     def _build_custom_cnn(self, dropout_rate: float) -> tf.keras.Model:
-        """Build custom CNN model (similar to notebook implementation)."""
+        """Build custom CNN model matching the saved weights structure."""
         model = models.Sequential([
-            layers.Conv2D(32, (3, 3), activation='relu', input_shape=self.input_shape),
-            layers.MaxPooling2D(2, 2),
-            layers.Conv2D(64, (3, 3), activation='relu'),
-            layers.MaxPooling2D(2, 2),
-            layers.Conv2D(128, (3, 3), activation='relu'),
-            layers.MaxPooling2D(2, 2),
-            layers.Conv2D(128, (3, 3), activation='relu'),
-            layers.MaxPooling2D(2, 2),
-            layers.Flatten(),
-            layers.Dense(512, activation='relu'),
-            layers.Dropout(dropout_rate),
-            layers.Dense(256, activation='relu'),
-            layers.Dropout(dropout_rate),
-            layers.Dense(self.num_classes, activation='softmax')
+            layers.Conv2D(32, (3, 3), activation='relu', input_shape=self.input_shape, name='conv2d_1'),
+            layers.MaxPooling2D(2, 2, name='max_pooling2d'),
+            layers.Conv2D(64, (3, 3), activation='relu', name='conv2d_2'),
+            layers.GlobalAveragePooling2D(name='global_average_pooling2d'),
+            layers.Dense(self.num_classes, activation='softmax', name='predictions')
         ])
         
         return model

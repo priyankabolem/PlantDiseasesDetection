@@ -225,7 +225,7 @@ def main():
             image = Image.open(uploaded_file)
             st.success("✅ Image uploaded successfully!")
         if image is not None:
-            st.image(image, caption="Input Image", use_container_width=True)
+            st.image(image, caption="Input Image", width='stretch')
 
     with col2:
         st.subheader("🔍 Analysis Results")
