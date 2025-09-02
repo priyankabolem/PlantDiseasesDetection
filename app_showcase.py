@@ -220,6 +220,7 @@ def main():
         st.markdown("[Full Documentation](https://github.com/priyankabolem/PlantDiseasesDetection)")
         st.markdown("[API Endpoint](https://plant-disease-api.onrender.com/docs)")
         st.markdown("[Source Code](https://github.com/priyankabolem/PlantDiseasesDetection)")
+        st.markdown("[LinkedIn Profile](https://www.linkedin.com/in/priyanka-bolem/)")
         st.markdown("[Contact](mailto:priyankabolem@gmail.com)")
 
     # Main analysis
@@ -294,7 +295,7 @@ def main():
     st.markdown("---")
     st.markdown("""
     <div style='text-align: center; color: #666;'>
-      <p>Built by <b>Priyanka Bolem</b> • ML Engineer • <a href='mailto:priyankabolem@gmail.com'>priyankabolem@gmail.com</a></p>
+      <p>Built by <b>Priyanka Bolem</b> • ML Engineer • <a href='mailto:priyankabolem@gmail.com'>priyankabolem@gmail.com</a> • <a href='https://www.linkedin.com/in/priyanka-bolem/'>LinkedIn</a></p>
       <p>Showcasing: Computer Vision • Deep Learning • Production Deployment • Full-Stack ML Development</p>
     </div>
     """, unsafe_allow_html=True)

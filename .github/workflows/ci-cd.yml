@@ -73,7 +73,7 @@ jobs:
       env:
         HF_TOKEN: ${{ secrets.HF_TOKEN }}
       run: |
-        git remote add hf https://HF_TOKEN:$HF_TOKEN@huggingface.co/spaces/${{ secrets.HF_USERNAME }}/plant-disease-detection
+        git remote add hf https://HF_TOKEN:$HF_TOKEN@huggingface.co/spaces/Priyabolem/plant-disease-detection
         git push hf main --force
 
   build-docker:

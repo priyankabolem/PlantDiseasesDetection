@@ -11,7 +11,7 @@ pinned: false
 
 # Plant Disease Detection System
 
-[![Hugging Face Space](https://img.shields.io/badge/Hugging%20Face-Space-yellow)](https://huggingface.co/spaces/priyabolem/plant-disease-detection)
+[![Hugging Face Space](https://img.shields.io/badge/Hugging%20Face-Space-yellow)](https://huggingface.co/spaces/Priyabolem/plant-disease-detection)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![TensorFlow 2.13+](https://img.shields.io/badge/tensorflow-2.13+-orange.svg)](https://www.tensorflow.org/)
@@ -20,7 +20,7 @@ A production-ready deep learning system for detecting plant diseases from leaf i
 
 ## Live Demo
 
-- **[Hugging Face Space](https://huggingface.co/spaces/priyabolem/plant-disease-detection)** - Interactive Streamlit application
+- **[Hugging Face Space](https://huggingface.co/spaces/Priyabolem/plant-disease-detection)** - Interactive Streamlit application
 - **[API Documentation](https://plant-disease-api.onrender.com/docs)** - FastAPI backend (Coming Soon)
 
 ## Features
@@ -192,8 +192,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Priyanka Bolem**
 - Email: priyankabolem@gmail.com
-- LinkedIn: [LinkedIn Profile]
-- GitHub: [@priyankabolem](https://github.com/priyankabolem)
+- LinkedIn: [Priyanka Bolem](https://www.linkedin.com/in/priyanka-bolem/)
+- GitHub: [@priyankabolem](https://github.com/priyankabolem/PlantDiseasesDetection)
 
 ## Troubleshooting
 

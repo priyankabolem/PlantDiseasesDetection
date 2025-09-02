@@ -27,7 +27,7 @@ cd github_repo
 
 # Add HF Space as remote
 echo -e "${YELLOW}Adding Hugging Face Space as remote...${NC}"
-git remote add hf https://huggingface.co/spaces/priyabolem/plant-disease-detection
+git remote add hf https://huggingface.co/spaces/Priyabolem/plant-disease-detection
 
 # Fetch latest from HF Space
 echo -e "${YELLOW}Fetching latest changes from HF Space...${NC}"

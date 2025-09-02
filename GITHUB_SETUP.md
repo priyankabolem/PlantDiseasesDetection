@@ -28,7 +28,7 @@ git push github main
 
 ### 3. Configure Hugging Face to Sync from GitHub
 
-1. Go to [Hugging Face Space Settings](https://huggingface.co/spaces/priyabolem/plant-disease-detection/settings)
+1. Go to [Hugging Face Space Settings](https://huggingface.co/spaces/Priyabolem/plant-disease-detection/settings)
 2. Under "Repository settings":
    - Click "Link a GitHub repository"
    - Authorize Hugging Face to access GitHub
@@ -42,7 +42,7 @@ In GitHub repository settings → Secrets and variables → Actions:
 
 ```
 HF_TOKEN: Hugging Face write token
-HF_USERNAME: priyabolem
+HF_USERNAME: Priyabolem
 DOCKER_USERNAME: (optional) Docker Hub username
 DOCKER_PASSWORD: (optional) Docker Hub password
 ```
@@ -61,8 +61,8 @@ git remote -v
 # Should show:
 # origin    https://github.com/YOUR_USERNAME/plant-disease-detection.git (fetch)
 # origin    https://github.com/YOUR_USERNAME/plant-disease-detection.git (push)
-# huggingface    https://huggingface.co/spaces/priyabolem/plant-disease-detection (fetch)
-# huggingface    https://huggingface.co/spaces/priyabolem/plant-disease-detection (push)
+# huggingface    https://huggingface.co/spaces/Priyabolem/plant-disease-detection (fetch)
+# huggingface    https://huggingface.co/spaces/Priyabolem/plant-disease-detection (push)
 ```
 
 ## Workflow After Setup
@@ -134,7 +134,7 @@ Docker Hub (optional)
 ## Useful Links
 
 - [GitHub Repository](https://github.com/priyankabolem/PlantDiseasesDetection)
-- [Hugging Face Space](https://huggingface.co/spaces/priyabolem/plant-disease-detection)
+- [Hugging Face Space](https://huggingface.co/spaces/Priyabolem/plant-disease-detection)
 - [GitHub Actions](https://github.com/priyankabolem/PlantDiseasesDetection/actions)
 - [Issues](https://github.com/priyankabolem/PlantDiseasesDetection/issues)
 

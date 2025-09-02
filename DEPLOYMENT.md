@@ -52,7 +52,7 @@ This guide covers deploying the Plant Disease Detection System to various platfo
 3. **Create and push to Space**
    ```bash
    # Add Hugging Face remote
-   git remote add hf https://huggingface.co/spaces/YOUR_USERNAME/plant-disease-detection
+   git remote add hf https://huggingface.co/spaces/Priyabolem/plant-disease-detection
    
    # Push to Hugging Face
    git push hf main
@@ -152,7 +152,7 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git remote add hf https://huggingface.co/spaces/YOUR_USERNAME/plant-disease-detection
+          git remote add hf https://huggingface.co/spaces/Priyabolem/plant-disease-detection
           git push hf main
 ```
 
