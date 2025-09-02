@@ -258,11 +258,9 @@ def main():
         """)
         st.markdown("---")
         st.subheader("Resources")
-        st.markdown("[Full Documentation](https://github.com/priyankabolem/PlantDiseasesDetection)")
-        st.markdown("[API Endpoint](https://plant-disease-api.onrender.com/docs)")
-        st.markdown("[Source Code](https://github.com/priyankabolem/PlantDiseasesDetection)")
-        st.markdown("[LinkedIn Profile](https://www.linkedin.com/in/priyanka-bolem/)")
-        st.markdown("[Contact](mailto:priyankabolem@gmail.com)")
+        st.markdown("[GitHub](https://github.com/priyankabolem/PlantDiseasesDetection)")
+        st.markdown("[LinkedIn](https://www.linkedin.com/in/priyanka-bolem/)")
+        st.markdown("[Email](mailto:priyankabolem@gmail.com)")
 
     # Main analysis
     col1, col2 = st.columns([1, 1])
