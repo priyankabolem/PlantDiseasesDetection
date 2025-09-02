@@ -1,3 +1,14 @@
+---
+title: Plant Disease Detection
+emoji: 🌿
+colorFrom: green
+colorTo: yellow
+sdk: streamlit
+sdk_version: "1.36.0"
+app_file: app_showcase.py
+pinned: false
+---
+
 # 🌿 Plant Disease Detection System
 
 [![Hugging Face Space](https://img.shields.io/badge/🤗%20Hugging%20Face-Space-yellow)](https://huggingface.co/spaces/priyabolem/plant-disease-detection)
