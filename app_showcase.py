@@ -1,6 +1,6 @@
 """
-Enhanced Streamlit app optimized for showcasing to recruiters.
-This version emphasizes professional metrics, quick demos, and technical depth.
+Plant Disease Detection System - Streamlit Application
+Production-ready ML system for detecting plant diseases from leaf images.
 """
 
 # --- Path setup so Python can import our local "src" package on HF Spaces ---
@@ -25,7 +25,7 @@ import json
 import time
 import logging
 
-# Local imports from your repo
+# Local imports
 from src.visualization.gradcam import GradCAM
 from src.data.treatments import get_treatment_recommendation
 from src.models.architectures import ModelBuilder
@@ -37,7 +37,7 @@ logger = logging.getLogger(__name__)
 # Page configuration
 st.set_page_config(
     page_title="Plant Disease Detection - ML Portfolio Demo",
-    page_icon="🌿",
+    page_icon="leaf",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -156,7 +156,7 @@ def predict_disease(model, image: Image.Image, class_names: dict):
 def main():
     # Header
     st.markdown(
-        "<h1 style='text-align: center;'>🌿 Plant Disease Detection System</h1>",
+        "<h1 style='text-align: center;'>Plant Disease Detection System</h1>",
         unsafe_allow_html=True
     )
     st.markdown(
@@ -174,15 +174,15 @@ def main():
     st.markdown("---")
 
     # Quick demo
-    st.subheader("🚀 Quick Demo - Try Sample Images")
+    st.subheader("Quick Demo - Try Sample Images")
     st.markdown("Click any button below to instantly see the system in action:")
 
     c1, c2, c3, c4 = st.columns(4)
     sample_images = {
-        "🍅 Tomato Blight": "sample_images/diseased/tomato_late_blight.jpg",
-        "🍎 Apple Scab": "sample_images/diseased/apple_scab.jpg",
-        "🍇 Grape Rot": "sample_images/diseased/grape_black_rot.jpg",
-        "🌿 Healthy Leaf": "sample_images/healthy/tomato_healthy.jpg",
+        "Tomato Blight": "sample_images/diseased/tomato_late_blight.jpg",
+        "Apple Scab": "sample_images/diseased/apple_scab.jpg",
+        "Grape Rot": "sample_images/diseased/grape_black_rot.jpg",
+        "Healthy Leaf": "sample_images/healthy/tomato_healthy.jpg",
     }
     for col, (name, path) in zip([c1, c2, c3, c4], sample_images.items()):
         with col:
@@ -198,7 +198,7 @@ def main():
 
     # Sidebar
     with st.sidebar:
-        st.header("⚙️ Technical Configuration")
+        st.header("Technical Configuration")
         model_type = st.selectbox("Model Architecture", ["efficientnet-b0", "resnet50", "mobilenet-v2"])
         confidence_threshold = st.slider("Confidence Threshold", 0.0, 1.0, 0.05)
         with st.expander("Advanced Options"):
@@ -206,7 +206,7 @@ def main():
             show_metrics = st.checkbox("Display Performance Metrics", value=True)
             download_results = st.checkbox("Enable Results Download", value=True)
         st.markdown("---")
-        st.subheader("🔧 Technical Stack")
+        st.subheader("Technical Stack")
         st.markdown("""
         - **Framework**: TensorFlow 2.13+
         - **Architecture**: Transfer Learning
@@ -216,32 +216,32 @@ def main():
         - **Monitoring**: Real-time metrics
         """)
         st.markdown("---")
-        st.subheader("🔗 Resources")
-        st.markdown("[📚 Full Documentation](https://github.com/priyankabolem/PlantDiseasesDetection)")
-        st.markdown("[🔌 API Endpoint](https://plant-disease-api.onrender.com/docs)")
-        st.markdown("[💻 Source Code](https://github.com/priyankabolem/PlantDiseasesDetection)")
-        st.markdown("[📧 Contact](mailto:priyankabolem@gmail.com)")
+        st.subheader("Resources")
+        st.markdown("[Full Documentation](https://github.com/priyankabolem/PlantDiseasesDetection)")
+        st.markdown("[API Endpoint](https://plant-disease-api.onrender.com/docs)")
+        st.markdown("[Source Code](https://github.com/priyankabolem/PlantDiseasesDetection)")
+        st.markdown("[Contact](mailto:priyankabolem@gmail.com)")
 
     # Main analysis
     col1, col2 = st.columns([1, 1])
     with col1:
-        st.subheader("📤 Upload Image")
+        st.subheader("Upload Image")
         uploaded_file = st.file_uploader("Choose a plant leaf image", type=["png", "jpg", "jpeg"])
         image = None
         if getattr(st.session_state, "use_sample", False):
             image = Image.open(st.session_state.sample_image)
-            st.success("✅ Sample image loaded!")
+            st.success("Sample image loaded!")
             st.session_state.use_sample = False
         elif uploaded_file is not None:
             image = Image.open(uploaded_file)
-            st.success("✅ Image uploaded successfully!")
+            st.success("Image uploaded successfully!")
         if image is not None:
             st.image(image, caption="Input Image", use_column_width=True)
 
     with col2:
-        st.subheader("🔍 Analysis Results")
+        st.subheader("Analysis Results")
         if image is not None:
-            with st.spinner("🧠 Analyzing image with deep learning model..."):
+            with st.spinner("Analyzing image with deep learning model..."):
                 model = load_model(model_type)
                 class_names = load_class_names()
                 results = predict_disease(model, image, class_names)
@@ -251,7 +251,7 @@ def main():
             # Always show results but with appropriate warnings
             if primary["confidence"] >= confidence_threshold:
                 st.markdown(
-                    f"<div class='success-box'><h3>✅ Disease Detected: {primary['class']}</h3>"
+                    f"<div class='success-box'><h3>Disease Detected: {primary['class']}</h3>"
                     f"<p><b>Confidence:</b> {primary['confidence']:.1%}</p>"
                     f"<p><b>Inference Time:</b> {results['inference_time_ms']:.1f}ms</p></div>",
                     unsafe_allow_html=True,
@@ -259,7 +259,7 @@ def main():
             else:
                 # Show prediction but with warning about low confidence
                 st.markdown(
-                    f"<div class='warning-box'><h3>⚠️ Possible Disease: {primary['class']}</h3>"
+                    f"<div class='warning-box'><h3>Possible Disease: {primary['class']}</h3>"
                     f"<p><b>Confidence:</b> {primary['confidence']:.1%} (Low - model needs more training)</p>"
                     f"<p><b>Inference Time:</b> {results['inference_time_ms']:.1f}ms</p>"
                     f"<p><i>Note: This model appears to be undertrained. Results should be verified by an expert.</i></p></div>",
@@ -268,23 +268,23 @@ def main():
 
             # Always show treatment recommendation and predictions
             treatment = get_treatment_recommendation(primary["class"])
-            with st.expander("💊 Treatment Recommendation", expanded=True):
+            with st.expander("Treatment Recommendation", expanded=True):
                 st.write(treatment)
                 if primary["confidence"] < 0.10:
-                    st.warning("⚠️ Treatment recommendation based on low-confidence prediction. Please verify diagnosis with an expert.")
+                    st.warning("Treatment recommendation based on low-confidence prediction. Please verify diagnosis with an expert.")
 
             # All predictions
-            with st.expander("📊 All Predictions"):
+            with st.expander("All Predictions"):
                 for i, pred in enumerate(results["predictions"]):
                     st.progress(pred["confidence"])
                     st.write(f"{i+1}. {pred['class']}: {pred['confidence']:.1%}")
         else:
-            st.info("👈 Upload an image or try a sample to begin analysis")
+            st.info("Upload an image or try a sample to begin analysis")
 
     # Optional metrics
     if "show_metrics" in locals() and show_metrics and image is not None:
         st.markdown("---")
-        st.subheader("📈 Model Performance Insights")
+        st.subheader("Model Performance Insights")
         m1, m2, m3 = st.columns(3)
         with m1: st.metric("Processing Time", f"{results['inference_time_ms']:.1f}ms")
         with m2: st.metric("Model Size", "16MB", help="Optimized for edge deployment")

@@ -1,8 +1,8 @@
-# 🔗 GitHub Repository Setup Guide
+# GitHub Repository Setup Guide
 
-This guide will help you set up a proper GitHub repository as the source of truth for your project.
+This guide will help set up a proper GitHub repository as the source of truth for this project.
 
-## 📋 Steps to Set Up GitHub Repository
+## Steps to Set Up GitHub Repository
 
 ### 1. Create GitHub Repository
 
@@ -28,23 +28,23 @@ git push github main
 
 ### 3. Configure Hugging Face to Sync from GitHub
 
-1. Go to your [Hugging Face Space Settings](https://huggingface.co/spaces/priyabolem/plant-disease-detection/settings)
+1. Go to [Hugging Face Space Settings](https://huggingface.co/spaces/priyabolem/plant-disease-detection/settings)
 2. Under "Repository settings":
    - Click "Link a GitHub repository"
-   - Authorize Hugging Face to access your GitHub
-   - Select your `plant-disease-detection` repository
+   - Authorize Hugging Face to access GitHub
+   - Select `plant-disease-detection` repository
    - Choose branch: `main`
    - Enable "Sync with GitHub repository"
 
 ### 4. Set Up GitHub Secrets (for CI/CD)
 
-In your GitHub repository settings → Secrets and variables → Actions:
+In GitHub repository settings → Secrets and variables → Actions:
 
 ```
-HF_TOKEN: Your Hugging Face write token
+HF_TOKEN: Hugging Face write token
 HF_USERNAME: priyabolem
-DOCKER_USERNAME: (optional) Your Docker Hub username
-DOCKER_PASSWORD: (optional) Your Docker Hub password
+DOCKER_USERNAME: (optional) Docker Hub username
+DOCKER_PASSWORD: (optional) Docker Hub password
 ```
 
 ### 5. Update Remote URLs
@@ -65,7 +65,7 @@ git remote -v
 # huggingface    https://huggingface.co/spaces/priyabolem/plant-disease-detection (push)
 ```
 
-## 🔄 Workflow After Setup
+## Workflow After Setup
 
 ### Development Workflow
 
@@ -73,7 +73,7 @@ git remote -v
 2. **Push to GitHub** (primary):
    ```bash
    git add .
-   git commit -m "Your changes"
+   git commit -m "changes description"
    git push origin main
    ```
 3. **Auto-sync to Hugging Face** happens automatically
@@ -85,9 +85,9 @@ git remote -v
 git push huggingface main
 ```
 
-## 🎯 Best Practices
+## Best Practices
 
-1. **Always push to GitHub first** - it's your source of truth
+1. **Always push to GitHub first** - it's the source of truth
 2. **Let Hugging Face sync automatically** from GitHub
 3. **Use GitHub Issues** for tracking bugs and features
 4. **Create Pull Requests** for major changes
@@ -97,7 +97,7 @@ git push huggingface main
    git push origin v1.0.0
    ```
 
-## 🚀 Quick Commands Reference
+## Quick Commands Reference
 
 ```bash
 # Status check
@@ -121,7 +121,7 @@ git checkout -b feature/new-feature
 git push -u origin feature/new-feature
 ```
 
-## 📊 Repository Structure
+## Repository Structure
 
 ```
 GitHub (Primary) ─────sync────→ Hugging Face Space
@@ -131,12 +131,12 @@ CI/CD Tests                   Live Demo
 Docker Hub (optional)
 ```
 
-## 🔗 Useful Links
+## Useful Links
 
-- [GitHub Repository](https://github.com/YOUR_USERNAME/plant-disease-detection)
+- [GitHub Repository](https://github.com/priyankabolem/PlantDiseasesDetection)
 - [Hugging Face Space](https://huggingface.co/spaces/priyabolem/plant-disease-detection)
-- [GitHub Actions](https://github.com/YOUR_USERNAME/plant-disease-detection/actions)
-- [Issues](https://github.com/YOUR_USERNAME/plant-disease-detection/issues)
+- [GitHub Actions](https://github.com/priyankabolem/PlantDiseasesDetection/actions)
+- [Issues](https://github.com/priyankabolem/PlantDiseasesDetection/issues)
 
 ---
 

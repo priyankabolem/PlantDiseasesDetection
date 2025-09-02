@@ -9,21 +9,21 @@ app_file: app_showcase.py
 pinned: false
 ---
 
-# 🌿 Plant Disease Detection System
+# Plant Disease Detection System
 
-[![Hugging Face Space](https://img.shields.io/badge/🤗%20Hugging%20Face-Space-yellow)](https://huggingface.co/spaces/priyabolem/plant-disease-detection)
+[![Hugging Face Space](https://img.shields.io/badge/Hugging%20Face-Space-yellow)](https://huggingface.co/spaces/priyabolem/plant-disease-detection)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![TensorFlow 2.13+](https://img.shields.io/badge/tensorflow-2.13+-orange.svg)](https://www.tensorflow.org/)
 
 A production-ready deep learning system for detecting plant diseases from leaf images. Features a custom CNN architecture trained on 38 disease categories across 14 plant species.
 
-## 🚀 Live Demo
+## Live Demo
 
-- **[🤗 Hugging Face Space](https://huggingface.co/spaces/priyabolem/plant-disease-detection)** - Interactive Streamlit app
-- **[📊 API Documentation](https://plant-disease-api.onrender.com/docs)** - FastAPI backend (Coming Soon)
+- **[Hugging Face Space](https://huggingface.co/spaces/priyabolem/plant-disease-detection)** - Interactive Streamlit application
+- **[API Documentation](https://plant-disease-api.onrender.com/docs)** - FastAPI backend (Coming Soon)
 
-## 🎯 Features
+## Features
 
 - **Real-time Disease Detection**: Upload a leaf image and get instant disease diagnosis
 - **38 Disease Categories**: Covers 14 different plant species including tomatoes, apples, grapes, and more
@@ -32,11 +32,11 @@ A production-ready deep learning system for detecting plant diseases from leaf i
 - **Grad-CAM Visualizations**: Understand what the model is looking at (optional)
 - **Mobile Responsive**: Works on desktop and mobile devices
 
-## 📸 Screenshots
+## Screenshots
 
 ![App Demo](assets/demo_screenshot.png)
 
-## 🛠️ Technical Stack
+## Technical Stack
 
 - **Frontend**: Streamlit with custom CSS styling
 - **Backend**: FastAPI (optional API deployment)
@@ -45,7 +45,7 @@ A production-ready deep learning system for detecting plant diseases from leaf i
 - **Deployment**: Hugging Face Spaces + Render
 - **Version Control**: GitHub with Git LFS for model weights
 
-## 📊 Model Performance
+## Model Performance
 
 | Metric | Value |
 |--------|-------|
@@ -54,13 +54,13 @@ A production-ready deep learning system for detecting plant diseases from leaf i
 | Inference Time | ~50ms |
 | Model Size | 116KB |
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Local Development
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/plant-disease-detection.git
+git clone https://github.com/priyankabolem/PlantDiseasesDetection.git
 cd plant-disease-detection
 ```
 
@@ -75,7 +75,7 @@ streamlit run app_showcase.py
 ```
 
 4. **Access the app**
-Open your browser to `http://localhost:8501`
+Open browser to `http://localhost:8501`
 
 ### Using Docker
 
@@ -84,23 +84,23 @@ docker build -t plant-disease-app .
 docker run -p 8501:8501 plant-disease-app
 ```
 
-## 🌱 Supported Plants and Diseases
+## Supported Plants and Diseases
 
 The model can detect diseases in the following plants:
 
-- 🍎 **Apple**: Apple scab, Black rot, Cedar apple rust, Healthy
-- 🫐 **Blueberry**: Healthy
-- 🍒 **Cherry**: Powdery mildew, Healthy
-- 🌽 **Corn**: Cercospora leaf spot, Common rust, Northern Leaf Blight, Healthy
-- 🍇 **Grape**: Black rot, Esca, Leaf blight, Healthy
-- 🍊 **Orange**: Haunglongbing (Citrus greening)
-- 🍑 **Peach**: Bacterial spot, Healthy
-- 🫑 **Pepper**: Bacterial spot, Healthy
-- 🥔 **Potato**: Early blight, Late blight, Healthy
-- 🍓 **Strawberry**: Leaf scorch, Healthy
-- 🍅 **Tomato**: Bacterial spot, Early blight, Late blight, Leaf Mold, and more...
+- **Apple**: Apple scab, Black rot, Cedar apple rust, Healthy
+- **Blueberry**: Healthy
+- **Cherry**: Powdery mildew, Healthy
+- **Corn**: Cercospora leaf spot, Common rust, Northern Leaf Blight, Healthy
+- **Grape**: Black rot, Esca, Leaf blight, Healthy
+- **Orange**: Haunglongbing (Citrus greening)
+- **Peach**: Bacterial spot, Healthy
+- **Pepper**: Bacterial spot, Healthy
+- **Potato**: Early blight, Late blight, Healthy
+- **Strawberry**: Leaf scorch, Healthy
+- **Tomato**: Bacterial spot, Early blight, Late blight, Leaf Mold, and more
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 plant-disease-detection/
@@ -121,7 +121,7 @@ plant-disease-detection/
 └── tests/               # Unit tests
 ```
 
-## 🔧 Development
+## Development
 
 ### Training a New Model
 
@@ -148,15 +148,15 @@ flake8 .
 mypy .
 ```
 
-## 🚀 Deployment
+## Deployment
 
 ### Hugging Face Spaces (Primary)
 
-The app automatically deploys to Hugging Face Spaces when you push to the main branch.
+The app automatically deploys to Hugging Face Spaces when pushing to the main branch.
 
 1. Fork this repository
 2. Create a new Space on Hugging Face
-3. Connect your GitHub repository
+3. Connect GitHub repository
 4. The Space will auto-build and deploy
 
 ### Render API (Secondary)
@@ -164,42 +164,42 @@ The app automatically deploys to Hugging Face Spaces when you push to the main b
 Deploy the FastAPI backend:
 
 1. Create a new Web Service on Render
-2. Connect your GitHub repository
+2. Connect GitHub repository
 3. Set build command: `pip install -r requirements-api.txt`
 4. Set start command: `uvicorn api:app --host 0.0.0.0 --port $PORT`
 
-## 🤝 Contributing
+## Contributing
 
-Contributions are welcome! Please follow these steps:
+Contributions are welcome. Please follow these steps:
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Dataset inspiration from PlantVillage
 - Built with TensorFlow and Streamlit
 - Deployed on Hugging Face Spaces
 
-## 👨‍💻 Author
+## Author
 
 **Priyanka Bolem**
 - Email: priyankabolem@gmail.com
-- LinkedIn: [Your LinkedIn Profile]
-- GitHub: [@yourusername]
+- LinkedIn: [LinkedIn Profile]
+- GitHub: [@priyankabolem](https://github.com/priyankabolem)
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
-1. **Low confidence predictions**: Ensure you're using good quality, well-lit leaf images
+1. **Low confidence predictions**: Ensure using good quality, well-lit leaf images
 2. **Slow loading**: First load may take time as the model initializes
 3. **Memory errors**: Try reducing batch size or image resolution
 
@@ -211,4 +211,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ by Priyanka Bolem
+Made by Priyanka Bolem

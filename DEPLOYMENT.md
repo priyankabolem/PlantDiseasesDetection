@@ -1,45 +1,45 @@
-# 🚀 Deployment Guide
+# Deployment Guide
 
 This guide covers deploying the Plant Disease Detection System to various platforms.
 
-## 📋 Prerequisites
+## Prerequisites
 
 - GitHub account with repository set up
 - Hugging Face account (for Spaces deployment)
 - Render account (optional, for API deployment)
 - Git with LFS installed locally
 
-## 🤗 Hugging Face Spaces Deployment
+## Hugging Face Spaces Deployment
 
 ### Option 1: Direct GitHub Integration (Recommended)
 
-1. **Fork/Clone this repository to your GitHub**
+1. **Fork/Clone this repository to GitHub**
    ```bash
-   git clone https://github.com/yourusername/plant-disease-detection.git
+   git clone https://github.com/priyankabolem/PlantDiseasesDetection.git
    cd plant-disease-detection
    ```
 
 2. **Create a new Space on Hugging Face**
    - Go to [Hugging Face Spaces](https://huggingface.co/new-space)
-   - Name your Space (e.g., `plant-disease-detection`)
+   - Name the Space (e.g., `plant-disease-detection`)
    - Select **Streamlit** as the SDK
    - Choose **Public** visibility
 
 3. **Connect to GitHub**
-   - In your Space settings, go to "Files and versions"
+   - In Space settings, go to "Files and versions"
    - Click "Link a GitHub repository"
-   - Select your repository
+   - Select repository
    - Choose the branch (usually `main`)
 
 4. **Configure automatic sync**
    - Enable "Sync with GitHub repository"
-   - The Space will automatically rebuild when you push to GitHub
+   - The Space will automatically rebuild when pushing to GitHub
 
 ### Option 2: Direct Upload
 
 1. **Clone the repository locally**
    ```bash
-   git clone https://github.com/yourusername/plant-disease-detection.git
+   git clone https://github.com/priyankabolem/PlantDiseasesDetection.git
    cd plant-disease-detection
    ```
 
@@ -58,17 +58,17 @@ This guide covers deploying the Plant Disease Detection System to various platfo
    git push hf main
    ```
 
-## 🌐 GitHub Pages (Documentation)
+## GitHub Pages (Documentation)
 
 1. **Enable GitHub Pages**
-   - Go to Settings → Pages in your repository
+   - Go to Settings → Pages in repository
    - Select source: "Deploy from a branch"
    - Choose branch: `main` and folder: `/docs`
 
-2. **Access your documentation**
+2. **Access documentation**
    - URL: `https://YOUR_USERNAME.github.io/plant-disease-detection/`
 
-## 🔧 Render Deployment (API)
+## Render Deployment (API)
 
 1. **Create `render.yaml`**
    ```yaml
@@ -86,14 +86,14 @@ This guide covers deploying the Plant Disease Detection System to various platfo
 2. **Connect to Render**
    - Go to [Render Dashboard](https://dashboard.render.com/)
    - New → Web Service
-   - Connect your GitHub repository
+   - Connect GitHub repository
    - Render will auto-detect the `render.yaml`
 
 3. **Deploy**
    - Click "Create Web Service"
    - Wait for build and deployment
 
-## 🐳 Docker Deployment
+## Docker Deployment
 
 1. **Build the image**
    ```bash
@@ -111,9 +111,9 @@ This guide covers deploying the Plant Disease Detection System to various platfo
    docker push YOUR_USERNAME/plant-disease-detector
    ```
 
-## ⚙️ Environment Variables
+## Environment Variables
 
-Configure these in your deployment platform:
+Configure these in deployment platform:
 
 ```bash
 # Hugging Face Spaces
@@ -129,7 +129,7 @@ MODEL_CACHE_DIR=/app/models
 LOG_LEVEL=INFO
 ```
 
-## 🔄 CI/CD with GitHub Actions
+## CI/CD with GitHub Actions
 
 Create `.github/workflows/deploy.yml`:
 
@@ -156,17 +156,17 @@ jobs:
           git push hf main
 ```
 
-## 📊 Monitoring
+## Monitoring
 
 ### Hugging Face Spaces
 - View logs: Space settings → Logs
 - Monitor usage: Space settings → Usage
 
 ### Render
-- View logs: Dashboard → Your service → Logs
+- View logs: Dashboard → Service → Logs
 - Set up health checks in `render.yaml`
 
-## 🚨 Troubleshooting
+## Troubleshooting
 
 ### Model Loading Issues
 ```bash
@@ -186,7 +186,7 @@ git commit -m "Track model files with LFS"
 - Implement health checks with longer timeouts
 - Consider using smaller model variants
 
-## 📝 Deployment Checklist
+## Deployment Checklist
 
 - [ ] Model files tracked with Git LFS
 - [ ] Environment variables configured
@@ -199,7 +199,7 @@ git commit -m "Track model files with LFS"
 - [ ] Rate limiting configured
 - [ ] SSL/HTTPS enabled
 
-## 🔗 Useful Links
+## Useful Links
 
 - [Streamlit Deployment Docs](https://docs.streamlit.io/streamlit-community-cloud/deploy-your-app)
 - [Hugging Face Spaces Docs](https://huggingface.co/docs/hub/spaces)

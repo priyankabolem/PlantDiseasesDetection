@@ -3,7 +3,7 @@
 # Script to sync Hugging Face Space improvements to GitHub repository
 # Usage: ./sync_to_github.sh
 
-echo "🔄 Syncing Plant Disease Detection improvements to GitHub..."
+echo "Syncing Plant Disease Detection improvements to GitHub..."
 
 # Configuration
 GITHUB_REPO="https://github.com/priyankabolem/PlantDiseasesDetection.git"
@@ -72,7 +72,7 @@ These changes fix the issue where all predictions had identical low confidence."
 echo -e "${YELLOW}Pushing to GitHub...${NC}"
 git push origin $BRANCH_NAME
 
-echo -e "${GREEN}✅ Sync complete!${NC}"
+echo -e "${GREEN}Sync complete!${NC}"
 echo -e "${GREEN}Branch created: $BRANCH_NAME${NC}"
 echo -e "${GREEN}Next steps:${NC}"
 echo "1. Go to: $GITHUB_REPO"
@@ -83,4 +83,4 @@ echo "3. Review and merge the improvements"
 cd ../..
 rm -rf $TEMP_DIR
 
-echo -e "${GREEN}🎉 Done! Your GitHub repository now has the working model.${NC}"
+echo -e "${GREEN}Done! GitHub repository now has the working model.${NC}"
