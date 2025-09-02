@@ -17,6 +17,8 @@ pinned: false
 
 A production-ready deep learning system for detecting plant diseases from leaf images. Features a custom CNN architecture trained on 38 disease categories across 14 plant species. Now with realistic sample images showing actual disease symptoms.
 
+> **Note**: This demo showcases the system's functionality and architecture. For accurate disease predictions, the model requires training on a comprehensive plant disease dataset. See [Model Status](MODEL_STATUS.md) for details.
+
 ## Live Demo
 
 - **[Hugging Face Space](https://huggingface.co/spaces/Priyabolem/plant-disease-detection)** - Interactive Streamlit application
@@ -45,6 +47,8 @@ A production-ready deep learning system for detecting plant diseases from leaf i
 - **Version Control**: GitHub with Git LFS for model weights
 
 ## Model Performance
+
+*Target performance with properly trained model:*
 
 | Metric | Value |
 |--------|-------|

@@ -178,17 +178,23 @@ def main():
 
     # Metrics
     c1, c2, c3, c4 = st.columns(4)
-    with c1: st.metric("Model Accuracy", "98.2%", help="Validated on 10,000+ test images")
+    with c1: st.metric("Target Accuracy", "98.2%", help="Achievable with full training")
     with c2: st.metric("Disease Classes", "38", help="Covering 14 plant species")
-    with c3: st.metric("Inference Speed", "~25ms", help="EfficientNetB0 on CPU")
-    with c4: st.metric("API Uptime", "99.9%", help="Production deployment metrics")
+    with c3: st.metric("Inference Speed", "~25ms", help="Fast CPU performance")
+    with c4: st.metric("Architecture", "Custom CNN", help="Lightweight design")
 
     st.markdown("---")
 
     # Quick demo
     st.subheader("Quick Demo - Try Sample Images")
     st.markdown("Click any button below to instantly see the system in action:")
-    st.markdown("*Note: Sample images show realistic leaf diseases with visible symptoms*")
+    
+    # Demo disclaimer
+    st.info("""
+    **Demo Notice**: This system demonstrates the complete ML pipeline and architecture for plant disease detection. 
+    For production-ready predictions, the model requires training on a comprehensive plant disease dataset. 
+    Current predictions showcase system functionality.
+    """)
 
     sample_images = {
         "Apple Scab": "sample_images/diseased/apple_scab.jpg",
