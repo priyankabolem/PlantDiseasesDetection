@@ -74,7 +74,9 @@ def load_model(model_type: str = "efficientnet-b0"):
     model_path = BASE_DIR / "weights" / "pretrained" / "best_model.h5"
     if model_path.exists():
         try:
-            model = tf.keras.models.load_model(str(model_path), compile=False)
+            # Try loading with custom_objects to handle version compatibility
+            custom_objects = {'batch_shape': None}
+            model = tf.keras.models.load_model(str(model_path), compile=False, custom_objects=custom_objects)
             logger.info(f"Model loaded from {model_path}")
         except Exception as e:
             logger.warning(f"Failed to load saved model: {e}")
@@ -204,7 +206,7 @@ def main():
             image = Image.open(uploaded_file)
             st.success("✅ Image uploaded successfully!")
         if image is not None:
-            st.image(image, caption="Input Image", use_column_width=True)
+            st.image(image, caption="Input Image", use_container_width=True)
 
     with col2:
         st.subheader("🔍 Analysis Results")
