@@ -211,11 +211,14 @@ def main():
     st.markdown("Click any button below to instantly see the system in action:")
 
     # Demo disclaimer
-    st.info(
+    st.warning(
         """
-    **Demo Notice**: This system demonstrates the complete ML pipeline and architecture for plant disease detection.
-    For production-ready predictions, the model requires training on a comprehensive plant disease dataset.
-    Current predictions showcase system functionality.
+    **⚠️ Important Demo Notice**: This system showcases the complete ML pipeline and architecture for plant disease detection.
+    
+    ⚠️ **The current model was trained on synthetic data for demonstration purposes only.**
+    ⚠️ **Predictions will NOT be accurate for real plant disease detection.**
+    
+    For production use with accurate predictions, train the model on real datasets like PlantVillage (87K images).
     """
     )
 
