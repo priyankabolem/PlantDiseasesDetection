@@ -188,6 +188,7 @@ def main():
     # Quick demo
     st.subheader("Quick Demo - Try Sample Images")
     st.markdown("Click any button below to instantly see the system in action:")
+    st.markdown("*Note: Sample images show realistic leaf diseases with visible symptoms*")
 
     sample_images = {
         "Apple Scab": "sample_images/diseased/apple_scab.jpg",

@@ -16,7 +16,7 @@ pinned: false
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![TensorFlow 2.13+](https://img.shields.io/badge/tensorflow-2.13+-orange.svg)](https://www.tensorflow.org/)
 
-A production-ready deep learning system for detecting plant diseases from leaf images. Features a custom CNN architecture trained on 38 disease categories across 14 plant species.
+A production-ready deep learning system for detecting plant diseases from leaf images. Features a custom CNN architecture trained on 38 disease categories across 14 plant species. Now with realistic sample images showing actual disease symptoms.
 
 ## Live Demo
 
