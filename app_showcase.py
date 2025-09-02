@@ -74,14 +74,33 @@ def load_model(model_type: str = "efficientnet-b0"):
     model_path = BASE_DIR / "weights" / "pretrained" / "best_model.h5"
     if model_path.exists():
         try:
-            # First try loading weights into a new model architecture
-            builder = ModelBuilder(num_classes=38, input_shape=(224, 224, 3))
-            model = builder.build_model(architecture=model_type, pretrained=False)
-            model.load_weights(str(model_path))
-            logger.info(f"Model weights loaded from {model_path}")
+            # Try multiple loading approaches for compatibility
+            import h5py
+            
+            # First check if it's a valid H5 file
+            with h5py.File(str(model_path), 'r') as f:
+                pass  # Just check if readable
+            
+            # Try loading with different approaches
+            try:
+                # Approach 1: Direct load_model with safe options
+                model = tf.keras.models.load_model(
+                    str(model_path), 
+                    compile=False,
+                    custom_objects=None,
+                    safe_mode=False
+                )
+                logger.info(f"Model loaded directly from {model_path}")
+            except:
+                # Approach 2: Load weights only
+                builder = ModelBuilder(num_classes=38, input_shape=(224, 224, 3))
+                model = builder.build_model(architecture=model_type, pretrained=False)
+                model.load_weights(str(model_path))
+                logger.info(f"Model weights loaded from {model_path}")
+                
         except Exception as e:
-            logger.warning(f"Failed to load model weights: {e}")
-            st.warning("Model loading failed. Using demo model instead.")
+            logger.error(f"All model loading approaches failed: {e}")
+            st.error("Could not load trained model. Using untrained demo model.")
             builder = ModelBuilder(num_classes=38, input_shape=(224, 224, 3))
             model = builder.build_model(architecture=model_type, pretrained=False)
     else:
