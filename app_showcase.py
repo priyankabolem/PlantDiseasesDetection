@@ -59,6 +59,13 @@ st.markdown("""
         border: 1px solid #c3e6cb;
         color: #155724;
     }
+    .warning-box {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        color: #856404;
+    }
     .demo-button {
         background-color: #4CAF50; color: white;
         padding: 0.5rem 1rem; text-align: center;
@@ -193,7 +200,7 @@ def main():
     with st.sidebar:
         st.header("⚙️ Technical Configuration")
         model_type = st.selectbox("Model Architecture", ["efficientnet-b0", "resnet50", "mobilenet-v2"])
-        confidence_threshold = st.slider("Confidence Threshold", 0.0, 1.0, 0.5)
+        confidence_threshold = st.slider("Confidence Threshold", 0.0, 1.0, 0.05)
         with st.expander("Advanced Options"):
             show_gradcam = st.checkbox("Generate Grad-CAM Visualization", value=True)
             show_metrics = st.checkbox("Display Performance Metrics", value=True)
@@ -240,6 +247,8 @@ def main():
                 results = predict_disease(model, image, class_names)
 
             primary = results["predictions"][0]
+            
+            # Always show results but with appropriate warnings
             if primary["confidence"] >= confidence_threshold:
                 st.markdown(
                     f"<div class='success-box'><h3>✅ Disease Detected: {primary['class']}</h3>"
@@ -247,19 +256,28 @@ def main():
                     f"<p><b>Inference Time:</b> {results['inference_time_ms']:.1f}ms</p></div>",
                     unsafe_allow_html=True,
                 )
-
-                # Treatment recommendation
-                treatment = get_treatment_recommendation(primary["class"])
-                with st.expander("💊 Treatment Recommendation", expanded=True):
-                    st.write(treatment)
-
-                # All predictions
-                with st.expander("📊 All Predictions"):
-                    for i, pred in enumerate(results["predictions"]):
-                        st.progress(pred["confidence"])
-                        st.write(f"{i+1}. {pred['class']}: {pred['confidence']:.1%}")
             else:
-                st.warning(f"⚠️ Low confidence ({primary['confidence']:.1%}). Please try a clearer image.")
+                # Show prediction but with warning about low confidence
+                st.markdown(
+                    f"<div class='warning-box'><h3>⚠️ Possible Disease: {primary['class']}</h3>"
+                    f"<p><b>Confidence:</b> {primary['confidence']:.1%} (Low - model needs more training)</p>"
+                    f"<p><b>Inference Time:</b> {results['inference_time_ms']:.1f}ms</p>"
+                    f"<p><i>Note: This model appears to be undertrained. Results should be verified by an expert.</i></p></div>",
+                    unsafe_allow_html=True,
+                )
+
+            # Always show treatment recommendation and predictions
+            treatment = get_treatment_recommendation(primary["class"])
+            with st.expander("💊 Treatment Recommendation", expanded=True):
+                st.write(treatment)
+                if primary["confidence"] < 0.10:
+                    st.warning("⚠️ Treatment recommendation based on low-confidence prediction. Please verify diagnosis with an expert.")
+
+            # All predictions
+            with st.expander("📊 All Predictions"):
+                for i, pred in enumerate(results["predictions"]):
+                    st.progress(pred["confidence"])
+                    st.write(f"{i+1}. {pred['class']}: {pred['confidence']:.1%}")
         else:
             st.info("👈 Upload an image or try a sample to begin analysis")
 
