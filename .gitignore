@@ -1,0 +1,83 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Model training
+training_output/
+logs/
+checkpoints/
+*.log
+wandb/
+mlruns/
+
+# Data
+data/
+datasets/
+*.csv
+*.xlsx
+
+# Secrets and config
+.env
+.env.local
+secrets.yaml
+config.local.yaml
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Demo images
+demo*.png
+Demo*.png
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# OS
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Git LFS pointer files (already tracked)
+# *.h5 files are tracked by Git LFS
