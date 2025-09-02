@@ -48,12 +48,15 @@ jobs:
       run: |
         black --check .
     
+    - name: Test imports
+      run: |
+        export PYTHONPATH="${PYTHONPATH}:${PWD}"
+        python tests/test_imports.py
+    
     - name: Run tests
       run: |
         export PYTHONPATH="${PYTHONPATH}:${PWD}"
-        python -c "import sys; print(f'Python: {sys.version}')"
-        python -c "import tensorflow as tf; print(f'TensorFlow: {tf.__version__}')"
-        pytest tests/ -v --cov=src --cov-report=xml -s
+        pytest tests/test_model.py -v --cov=src --cov-report=xml -s --tb=short
     
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3

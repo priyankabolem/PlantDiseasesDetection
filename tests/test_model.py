@@ -2,6 +2,7 @@
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Suppress TF warnings
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # Force CPU
 
 import numpy as np
 from pathlib import Path
@@ -12,12 +13,15 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 try:
     import tensorflow as tf  # noqa: E402
-    tf.config.set_visible_devices([], 'GPU')  # Force CPU for tests
-except Exception:
-    # If GPU config fails, continue anyway
-    pass
+except ImportError as e:
+    print(f"TensorFlow import failed: {e}")
+    raise
 
-from src.models.architectures import ModelBuilder  # noqa: E402
+try:
+    from src.models.architectures import ModelBuilder  # noqa: E402
+except ImportError as e:
+    print(f"ModelBuilder import failed: {e}")
+    raise
 
 
 class TestModel:
