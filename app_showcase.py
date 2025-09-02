@@ -192,8 +192,9 @@ def main():
 
     sample_images = {
         "Apple Scab": "sample_images/diseased/apple_scab.jpg",
-        "Tomato Blight": "sample_images/diseased/tomato_late_blight.jpg",
+        "Tomato Early Blight": "sample_images/diseased/tomato_late_blight.jpg",
         "Grape Black Rot": "sample_images/diseased/grape_black_rot.jpg",
+        "Tomato Late Blight": "sample_images/diseased/tomato other.jpg",
         "Healthy Apple": "sample_images/healthy/apple_healthy.jpg",
         "Healthy Tomato": "sample_images/healthy/tomato_healthy.jpg",
         "Healthy Grape": "sample_images/healthy/grape_healthy.jpg",
@@ -201,10 +202,10 @@ def main():
     
     # Create two rows of sample buttons
     st.write("**Diseased Samples:**")
-    c1, c2, c3 = st.columns(3)
-    diseased_cols = [c1, c2, c3]
+    c1, c2, c3, c4 = st.columns(4)
+    diseased_cols = [c1, c2, c3, c4]
     
-    for col, (name, path) in zip(diseased_cols, list(sample_images.items())[:3]):
+    for col, (name, path) in zip(diseased_cols, list(sample_images.items())[:4]):
         with col:
             if st.button(name, use_container_width=True):
                 p = BASE_DIR / path
@@ -218,7 +219,7 @@ def main():
     c4, c5, c6 = st.columns(3)
     healthy_cols = [c4, c5, c6]
     
-    for col, (name, path) in zip(healthy_cols, list(sample_images.items())[3:]):
+    for col, (name, path) in zip(healthy_cols, list(sample_images.items())[4:]):
         with col:
             if st.button(name, use_container_width=True):
                 p = BASE_DIR / path
