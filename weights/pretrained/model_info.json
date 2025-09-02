@@ -1,0 +1,5 @@
+{
+  "model_type": "demonstration",
+  "note": "This model is configured for demonstration purposes to show variety",
+  "actual_training": "For production use, train with real dataset"
+}

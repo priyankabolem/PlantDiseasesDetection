@@ -141,7 +141,7 @@ def train_model(data_dir: str, output_dir: str, epochs: int = 50, batch_size: in
     model = builder.build_model(
         architecture="custom-cnn",
         pretrained=False,
-        dropout_rate=0.5
+        dropout_rate=0.3
     )
     
     # Compile model
