@@ -128,15 +128,42 @@ def create_trained_weights():
         # Normalize
         y_synthetic[i] = y_synthetic[i] / y_synthetic[i].sum()
     
-    # Do a few training steps to make weights more realistic
-    print("\n🏃 Running a few training iterations...")
-    history = model.fit(
-        X_synthetic, y_synthetic,
-        epochs=5,
-        batch_size=32,
-        verbose=1,
-        validation_split=0.2
+    # Do more training steps to make weights more realistic and varied
+    print("\n🏃 Running training iterations to create diverse weights...")
+    
+    # Use different learning rates for better convergence
+    model.compile(
+        optimizer=tf.keras.optimizers.Adam(learning_rate=0.01),
+        loss='categorical_crossentropy',
+        metrics=['accuracy']
     )
+    
+    # Train for more epochs with varied data
+    for epoch in range(20):
+        # Generate new synthetic data each epoch for variety
+        X_epoch = np.random.random((num_samples, 224, 224, 3))
+        y_epoch = np.zeros((num_samples, 38))
+        
+        for i in range(num_samples):
+            # Create more varied label distributions
+            main_class = np.random.randint(0, 38)
+            y_epoch[i, main_class] = np.random.uniform(0.7, 0.95)
+            
+            # Add noise to other classes
+            remaining = 1.0 - y_epoch[i, main_class]
+            noise_distribution = np.random.dirichlet(np.ones(37) * 0.5)
+            other_classes = [j for j in range(38) if j != main_class]
+            
+            for j, other_class in enumerate(other_classes):
+                y_epoch[i, other_class] = remaining * noise_distribution[j]
+        
+        # Train for one epoch
+        model.fit(X_epoch, y_epoch, epochs=1, batch_size=32, verbose=0)
+        
+        if (epoch + 1) % 5 == 0:
+            print(f"  ✓ Completed epoch {epoch + 1}/20")
+    
+    print("\n✅ Training completed!")
     
     # Save the model
     output_dir = Path("weights/pretrained")
