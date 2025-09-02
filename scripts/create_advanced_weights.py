@@ -248,7 +248,7 @@ def add_powdery_patches(img):
                     if y1 < y2 and x1 < x2:
                         img[y1:y2, x1:x2] = (
                             img[y1:y2, x1:x2] * (1 - alpha * 0.7)
-                            + overlay[i : i + 1, j : j + 1] * alpha * 0.7
+                            + overlay[i:i + 1, j:j + 1] * alpha * 0.7
                         )
 
     return img
@@ -261,11 +261,11 @@ def add_mosaic_pattern(img):
         for j in range(0, 224, 20):
             if np.random.random() > 0.5:
                 # Lighter patch
-                img[i : i + 20, j : j + 20, 1] *= 1.2
-                img[i : i + 20, j : j + 20, 0] *= 1.1
+                img[i:i + 20, j:j + 20, 1] *= 1.2
+                img[i:i + 20, j:j + 20, 0] *= 1.1
             else:
                 # Darker patch
-                img[i : i + 20, j : j + 20, :] *= 0.8
+                img[i:i + 20, j:j + 20, :] *= 0.8
 
     # Blur to make it more natural
     img = cv2.GaussianBlur(img, (5, 5), 0)
@@ -368,3 +368,4 @@ if __name__ == "__main__":
 
     print("\nAdvanced model created successfully!")
     print("The model should now provide varied and meaningful predictions.")
+
